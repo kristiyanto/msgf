@@ -9,21 +9,20 @@ import os
 import glob
 import os.path
 import subprocess
-from os.path import isfile, join
+import re
+import csv
+from ftplib import FTP
+from _functions import *
 
 working_dir = os.getcwd() +"/data/"
-print(working_dir)
+#if not os.path.exists(working_dir):
+#    os.makedirs(working_dir)
 
 spectrum 	= []
 out 		= []
 db 			= None
 module 		= None
-
-######################## FUNCTIONS ###########################
-def msgf(spectrum, db, mod, out):
-	#cmd = "java -Xmx3500M -jar MSGFPlus.jar -s " + spectrum + " -d " + db + " -o " + out
-	subprocess.call(['java', '-Xmx3500M', '-jar', '/root/MSGFPlus.jar', '-s',spectrum, '-d', db, '-o', out])
-
+input_csv	= None
 
 ######################## DECOMPRESS ###########################
 spectrum_tmp = []
@@ -37,30 +36,25 @@ for src_name in glob.glob(os.path.join(working_dir, '*.gz')):
             for line in infile:
                 outfile.write(line)
 
-######################## SCAN FILES ###########################
+dir_content = scan_dir(working_dir)
+spectrum 	= scan_spectrum(working_dir)
+db 			= dir_content['db']
+#module 		= dir_content['module']
+input_csv	= dir_content['input_csv']
 
-for file in os.listdir(working_dir):
-	if file.endswith(".mzML"):
-		spectrum.append(join(working_dir, file))
-		out.append(file[:-4]+".mzid")
-		print("Spectrum: ", file)
-	if file.endswith(".fasta"):
-		db 			= join(working_dir, file)
-		print("Database: ", file)
-	if file.endswith(".mod"):
-		module		= join(working_dir, file)
-		print("Module:", file)
-if (len(spectrum)==0):
-	print("Missing spectrum files.")
-	exit()
-if (db == None):
-	print("Missing database file.")
-	exit()
-if (module == None):
-	print("Missing module file.")
-	exit()
 
-######################## MSGF ###########################
+######################## DOWNLOAD FTP ###########################
+if (input_csv != None):
+	with open(input_csv, 'rb') as f:
+	    reader = csv.reader(f)
+	    header = reader.next()
+	    for row in reader:
+	        for src in row:
+	        	print src
+	        	if (check_url(src)):
+	        		get_ftp(src)
+
+######################## CHECK FILES ###########################
 
 for s in spectrum:
 	out = (s[:-4]+".mzid")
