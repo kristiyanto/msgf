@@ -74,11 +74,11 @@ def get_ftp(ftp_url):
 		ftp.cwd(url_path)
 		ftp.retrlines('LIST')
 		filenames = ftp.nlst()
-		print filenames
+		print(filenames)
 		filematch = "*.*"
 		for filename in ftp.nlst(filematch):
 		    fhandle = open(filename, 'wb')
-		    print 'Getting ' + filename
+		    print('Getting ' + filename)
 		    ftp.retrbinary('RETR ' + filename, fhandle.write)
 		    fhandle.close()
 		print("FTP Download done.")

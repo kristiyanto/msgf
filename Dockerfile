@@ -1,5 +1,6 @@
 # Base container
-FROM python
+FROM python:2.7
+
 
 # Maintainer
 MAINTAINER Daniel Kristiyanto, daniel.kristiyanto@pnnl.gov
@@ -22,7 +23,7 @@ ADD MSGFPlus.jar /root/
 
 # Add Entrypoint Script
 ADD entry.py /root/
-ADD _functions.py
+ADD _functions.py /root/
 
 # Run on Entrypoint
 CMD python /root/entry.py
