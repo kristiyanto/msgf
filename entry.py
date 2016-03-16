@@ -50,7 +50,7 @@ if (input_csv != None):
 	    header = reader.next()
 	    for row in reader:
 	        for src in row:
-	        	print src
+	        	print(src)
 	        	if (check_url(src)):
 	        		get_ftp(src)
 
