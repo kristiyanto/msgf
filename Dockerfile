@@ -22,6 +22,7 @@ ADD MSGFPlus.jar /root/
 
 # Add Entrypoint Script
 ADD entry.py /root/
+ADD _functions.py
 
 # Run on Entrypoint
 CMD python /root/entry.py
