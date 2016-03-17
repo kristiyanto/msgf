@@ -13,8 +13,9 @@ from ftplib import FTP
 
 ######################## SCAN FILES ###########################
 
-def msgf(spectrum, db, mod, out):
-	subprocess.call(['java', '-Xmx3500M', '-jar', 'MSGFPlus.jar', '-s',spectrum, '-d', db, '-o', out])
+def msgf(spectrum, db, out):
+	print(spectrum, db, out)
+	subprocess.call(['java', '-Xmx3500M', '-jar', 'MSGFPlus.jar', '-s', spectrum, '-d', db, '-o', out])
 
 
 ######################## SCAN FILES ###########################
@@ -30,6 +31,9 @@ def scan_spectrum(working_dir):
 	return spectrum
 
 def scan_dir(working_dir):
+	db 			= None
+	module 		= None
+	input_csv	= None
 	for file in os.listdir(working_dir):
 		if file.lower().endswith(".fasta"):
 			db 			= join(working_dir, file)
@@ -47,7 +51,7 @@ def scan_dir(working_dir):
 			if (input_csv != None):
 				print(input_csv)
 			print("CSV:", file)
-	return {'db':db, 'input_csv':input_csv}
+	return (db, input_csv)
 
 
 def check_url(url):
@@ -68,7 +72,7 @@ def get_ftp(ftp_url):
 	print(url_host)
 	work_dir 	= os.getcwd()
 	os.chdir(work_dir+"/data")
-	if (url_path != None):
+	try:
 		ftp 	= FTP(url_host)
 		ftp.login()
 		ftp.cwd(url_path)
@@ -82,6 +86,8 @@ def get_ftp(ftp_url):
 		    ftp.retrbinary('RETR ' + filename, fhandle.write)
 		    fhandle.close()
 		print("FTP Download done.")
+	except Exception:
+		pass
 	os.chdir(work_dir)
 	return URL
 

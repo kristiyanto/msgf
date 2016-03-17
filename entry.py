@@ -36,12 +36,9 @@ for src_name in glob.glob(os.path.join(working_dir, '*.gz')):
             for line in infile:
                 outfile.write(line)
 
-dir_content = scan_dir(working_dir)
-spectrum 	= scan_spectrum(working_dir)
-db 			= dir_content['db']
+spectrum 				= scan_spectrum(working_dir)
+db, input_csv 			= scan_dir(working_dir)
 #module 		= dir_content['module']
-input_csv	= dir_content['input_csv']
-
 
 ######################## DOWNLOAD FTP ###########################
 if (input_csv != None):
@@ -55,9 +52,11 @@ if (input_csv != None):
 	        		get_ftp(src)
 
 ######################## CHECK FILES ###########################
+spectrum 				= scan_spectrum(working_dir)
+db, input_csv 			= scan_dir(working_dir)
 
 for s in spectrum:
 	out = (s[:-4]+".mzid")
-	msgf(s,db,module,out)
+	msgf(s,db,out)
 
 print("Done.")
