@@ -58,5 +58,9 @@ db, input_csv 			= scan_dir(working_dir)
 for s in spectrum:
 	out = (s[:-4]+".mzid")
 	msgf(s,db,out)
+try:
+	runr = subprocess.call(['Rscript','filter.R'])
+except:
+	print("Cannot run R.")
 
 print("Done.")
