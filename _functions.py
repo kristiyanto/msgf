@@ -1,7 +1,4 @@
-# THIS SCRIPT GRABS FILES FROM PROVIDED FTP SERVER
 # DANIEL.KRISTIYANTO@PNNL.GOV
-
-####
 
 import os
 import sys
@@ -11,7 +8,7 @@ from os.path import isfile, join
 from urlparse import urlparse
 from ftplib import FTP
 
-######################## SCAN FILES ###########################
+######################## SUB PROCESSES ###########################
 
 def msgf(spectrum, db, out):
 	print(spectrum, db, out)
@@ -57,6 +54,8 @@ def scan_dir(working_dir):
 			#print("CSV:", file)
 	return (db, input_csv)
 
+######################## FTP HARVESTING ###########################
+
 
 def check_url(url):
 	regex = re.compile(
@@ -83,7 +82,8 @@ def get_ftp(ftp_url):
 		ftp.retrlines('LIST')
 		filenames = ftp.nlst()
 		print(filenames)
-		filematch = "*.*"
+		filematch = "*.*" #Any files
+
 		for filename in ftp.nlst(filematch):
 		    fhandle = open(filename, 'wb')
 		    print('Getting ' + filename)

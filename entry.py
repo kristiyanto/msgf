@@ -15,8 +15,6 @@ from ftplib import FTP
 from _functions import *
 
 working_dir = os.getcwd() +"/data/"
-#if not os.path.exists(working_dir):
-#    os.makedirs(working_dir)
 
 spectrum 	= []
 out 		= []
@@ -61,7 +59,6 @@ for s in spectrum:
 	out = os.path.splitext(s)[0]+'.mzid'
 	print("Output:", out)
 	msgf(s,db,out)
-
 try:
 	rscript()
 except:
