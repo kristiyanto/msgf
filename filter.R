@@ -11,11 +11,15 @@ setwd("/root/data/")
 
 mz.files <- list.files(path = ".", pattern ="mzid", all.files = F, 
                        full.names = F, recursive = F, ignore.case = T, include.dirs = F)
+if(length(mz.files)==0)
+  print("No MZID files found.")
 
-prj               <- MSnID(.)
+prj               <- MSnID()
 prj               <- read_mzIDs(object = prj, mzids = mz.files)
 prj               <- assess_termini(prj)
 prj               <- assess_missed_cleavages(prj)
+show(prj)
+print(paste("Before Filtering:",length(accessions(prj))))
 prj               <- apply_filter(prj, "numIrregCleavages == 0")
 prj               <- apply_filter(prj, "numMissCleavages < 2")
 prj$msmsScore     <- -log10(prj$`MS-GF:SpecEValue`)
@@ -33,5 +37,7 @@ prj               <- apply_filter(prj, fObj.sann)
 
 prj <- apply_filter(prj, "!grepl('Contaminant', accession)")
 prj <- apply_filter(prj, "!grepl('XXX_', accession)")
-
+print(paste("After Filtering:",length(accessions(prj))))
+show(prj)
+print("Filtering Done. Output File: OUT.RData")
 save.image(file = "OUT.RData")

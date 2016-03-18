@@ -17,12 +17,16 @@ def msgf(spectrum, db, out):
 	print(spectrum, db, out)
 	subprocess.call(['java', '-Xmx3500M', '-jar', 'MSGFPlus.jar', '-s', spectrum, '-d', db, '-o', out])
 
+def rscript():
+	print("Filtering.")
+	runr = subprocess.call(['Rscript','filter.R'])
 
 ######################## SCAN FILES ###########################
+
 def scan_spectrum(working_dir):
 	spectrum = []
 	for file in os.listdir(working_dir):
-		if file.lower().endswith((".mzML",".mgf")):
+		if file.lower().endswith((".mzml",".mgf", ".mzxml", ".ms2", ".pkl")):
 			spectrum.append(join(working_dir, file))
 			if (len(spectrum)==0):
 				print("Missing spectrum files.")
@@ -40,17 +44,17 @@ def scan_dir(working_dir):
 			if (db == None):
 				print("Missing database file.")
 				exit()
-			print("Database: ", file)
+			#print("Database: ", file)
 		if file.lower().endswith(".mod"):
 			module		= join(working_dir, file)
 			if (module == None):
 				print("Missing module file.")
-			print("Module:", file)
+			#print("Module:", file)
 		if file.lower().endswith(".csv"):
 			input_csv 	= join(working_dir, file)
 			if (input_csv != None):
 				print(input_csv)
-			print("CSV:", file)
+			#print("CSV:", file)
 	return (db, input_csv)
 
 

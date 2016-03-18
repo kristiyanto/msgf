@@ -55,12 +55,17 @@ if (input_csv != None):
 spectrum 				= scan_spectrum(working_dir)
 db, input_csv 			= scan_dir(working_dir)
 
+print("Spectrum:", spectrum)
+print("Database:", db)
 for s in spectrum:
-	out = (s[:-4]+".mzid")
+	out = os.path.splitext(s)[0]+'.mzid'
+	print("Output:", out)
 	msgf(s,db,out)
+
 try:
-	runr = subprocess.call(['Rscript','filter.R'])
+	rscript()
 except:
-	print("Cannot run R.")
+	print("Filtering failed.")
+
 
 print("Done.")
