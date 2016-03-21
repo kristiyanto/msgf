@@ -11,8 +11,11 @@ from ftplib import FTP
 ######################## SUB PROCESSES ###########################
 
 def msgf(spectrum, db, out):
-	print(spectrum, db, out)
-	subprocess.call(['java', '-Xmx3500M', '-jar', 'MSGFPlus.jar', '-s', spectrum, '-d', db, '-o', out])
+	#print(spectrum, db, out)
+	try:
+		subprocess.call(['java', '-Xmx3500M', '-jar', 'MSGFPlus.jar', '-s', spectrum, '-d', db, '-o', out])
+	except:
+		print("MZID conversion failed.")
 
 def rscript():
 	print("Filtering.")
@@ -30,6 +33,18 @@ def scan_spectrum(working_dir):
 				exit()
 			print("Spectrum: ", file)
 	return spectrum
+
+def scan_mzid(working_dir):
+	mzid = []
+	for file in os.listdir(working_dir):
+		if file.lower().endswith((".mzid")):
+			mzid.append(join(working_dir, file))
+			if (len(mzid)==0):
+				print("No MZID file found.")
+				exit()
+			print("MZID: ", file)
+	return mzid
+
 
 def scan_dir(working_dir):
 	db 			= None

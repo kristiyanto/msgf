@@ -53,16 +53,17 @@ if (input_csv != None):
 spectrum 				= scan_spectrum(working_dir)
 db, input_csv 			= scan_dir(working_dir)
 
-print("Spectrum:", spectrum)
-print("Database:", db)
 for s in spectrum:
 	out = os.path.splitext(s)[0]+'.mzid'
-	print("Output:", out)
 	msgf(s,db,out)
-try:
-	rscript()
-except:
-	print("Filtering failed.")
 
+if len(scan_mzid(working_dir)) != 0:
+	try:
+		print("Filtering.")
+		rscript()
+		print("Done.")
+	except:
+		print("Filtering failed.")
+else:
+	print("Missing MZID Files.")
 
-print("Done.")
