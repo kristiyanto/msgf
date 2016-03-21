@@ -66,4 +66,6 @@ if len(scan_mzid(working_dir)) != 0:
 		print("Filtering failed.")
 else:
 	print("Missing MZID Files.")
+	print("Windows/Mac Users:")
+	print("Hint for java heap memory space error: increase VM/Virtualbox Base Memory allocation.")
 
