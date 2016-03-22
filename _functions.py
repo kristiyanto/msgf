@@ -19,7 +19,7 @@ def msgf(spectrum, db, out):
 
 def rscript():
 	print("Filtering.")
-	runr = subprocess.call(['Rscript','filter.R'])
+	runr = subprocess.call(['Rscript','itraq.R'])
 
 ######################## SCAN FILES ###########################
 
