@@ -1,20 +1,17 @@
 library(MSnbase)
-library(MSnID)
-library(rpx)
 library(mzID)
 
 setwd("C:/Users/kris239/Desktop/itraq")
 
-mzid        <- list.files(path = ".", pattern ="mzid", all.files = F, 
+mzid.files        <- list.files(path = ".", pattern ="mzid", all.files = F, 
                        full.names = F, recursive = F, ignore.case = T, include.dirs = F)
-
-mzml.files  <- list.files(path = ".", pattern ="mzML$", all.files = F, 
+mzml.files        <- list.files(path = ".", pattern ="mzML$", all.files = F, 
                        full.names = F, recursive = F, ignore.case = T, include.dirs = F)
+mzids.raw         <- mzID(mzid.files)
+msexp.raw         <- readMSData(mzml.files, verbose = FALSE)
+msexp.id          <- addIdentificationData(msexp.raw, id = mzid.files)
+idSummary(msexp.id)
+msexp.id
 
-msexp <- readMSData(mzml.files, verbose = FALSE)
-msexp <- addIdentificationData(msexp, id = mzid, verbose = FALSE)
-idSummary(msexp)
-msexp
-
-mz(msexp)
-qnt <- quantify(msexp, method="trap", reporters=iTRAQ4, strict=F)
+head(mz(msexp.id))
+qnt <- quantify(msexp.id, method="trap", reporters=iTRAQ4, strict=F)
