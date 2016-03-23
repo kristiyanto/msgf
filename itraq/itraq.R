@@ -33,6 +33,4 @@ head(exprs(agg))
 ####################################### OUTPUT ###################################################
 
 write.csv(as.data.frame(cbind(Assccession=str_replace(row.names(agg),"ref\\|",""),exprs(agg))), row.names = F, file="LabelledQuant.csv")
-rm(acc)
-
 save.image(file="Labelled-Quant.RData")
