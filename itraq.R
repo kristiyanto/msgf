@@ -1,14 +1,15 @@
 library(MSnbase)
 library(mzID)
+library(stringr)
 
 setwd("/root/data")
 
 ####################################### READ FILE ###################################################
 
 mzid.files        <- list.files(path = ".", pattern ="mzid", all.files = F, 
-                       full.names = F, recursive = F, ignore.case = T, include.dirs = F)[2]
+                       full.names = F, recursive = F, ignore.case = T, include.dirs = F)
 mzml.files        <- list.files(path = ".", pattern ="mzML$", all.files = F, 
-                       full.names = F, recursive = F, ignore.case = T, include.dirs = F)[2]
+                       full.names = F, recursive = F, ignore.case = T, include.dirs = F)
 
 mzids.raw         <- mzID(mzid.files)
 msexp.raw         <- readMSData(mzml.files)
@@ -30,6 +31,8 @@ rm(mzid.files)
 rm(mzml.files)
 head(exprs(agg))
 ####################################### OUTPUT ###################################################
-save.image(file="Labelled-Quant.RData")
-write.csv(as.data.frame(cbind(Assccession=row.names(agg),exprs(agg))), row.names = F, file="LabelledQuant.csv")
 
+write.csv(as.data.frame(cbind(Assccession=str_replace(row.names(agg),"ref\\|",""),exprs(agg))), row.names = F, file="LabelledQuant.csv")
+rm(acc)
+
+save.image(file="Labelled-Quant.RData")
