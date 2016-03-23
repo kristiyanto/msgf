@@ -1,7 +1,7 @@
 library(MSnbase)
 library(mzID)
 
-setwd("C:/Users/kris239/Desktop/itraq")
+setwd("/root/data")
 
 ####################################### READ FILE ###################################################
 
@@ -23,13 +23,13 @@ idSummary(msexp)
 ####################################### QUANTIFICATION ###################################################
 qnt               <- quantify(msexp, method="max", reporters=iTRAQ4, strict=F, verbose=F)
 qnt               <- filterNA(qnt, pNA = 0)
-agg               <- combineFeatures(qnt, groupBy = fData(qnt.filtered)$accession, fun="mean")
+agg               <- combineFeatures(qnt, groupBy = fData(qnt)$accession, fun="mean")
 
 ####################################### CLEAN UP ###################################################
 rm(mzid.files)
 rm(mzml.files)
-
+head(exprs(agg))
 ####################################### OUTPUT ###################################################
 save.image(file="Labelled-Quant.RData")
-write.csv(cbind(Assccession=row.names(agg),exprs(agg)), row.names = F)
+write.csv(as.data.frame(cbind(Assccession=row.names(agg),exprs(agg))), row.names = F, file="LabelledQuant.csv")
 
