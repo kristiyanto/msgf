@@ -31,7 +31,7 @@ def scan_spectrum(working_dir):
 			if (len(spectrum)==0):
 				print("Missing spectrum files.")
 				exit()
-			print("Spectrum: ", file)
+			#print("Spectrum: ", file)
 	return spectrum
 
 def scan_mzid(working_dir):
@@ -42,7 +42,7 @@ def scan_mzid(working_dir):
 			if (len(mzid)==0):
 				print("No MZID file found.")
 				exit()
-			print("MZID: ", file)
+			#print("MZID: ", file)
 	return mzid
 
 
