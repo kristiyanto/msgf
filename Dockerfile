@@ -23,7 +23,7 @@ ADD MSGFPlus.jar /root/
 # Add Entrypoint Script
 ADD entry.py /root/
 ADD _functions.py /root/
-ADD filter.R /root/
+ADD itraq.R /root/
 ADD install.R /root/
 
 RUN Rscript install.R
