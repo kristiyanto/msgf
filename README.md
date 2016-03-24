@@ -4,7 +4,7 @@ NAME is an open source pipelines for Mass Spectrometry Data Pre-Processing and Q
 NAME uses [Bioconductor Proteomics](https://github.com/Bioconductor/bioc_docker) image as the base image.
 
 ### Requirements
-To run NMAE Docker engine must be installed. [Click here](https://docs.docker.com/engine/installation/) for a detailed information to install Docker engine on various operating system including Windows and MacOS.
+To run NAME Docker engine must be installed. [Click here](https://docs.docker.com/engine/installation/) for a detailed information to install Docker engine on various operating system including Windows and MacOS.
 
 Protein identification and quantification is a computationally intensive process. Depending on the size of the data, at least 4Gb available memory on the Docker Machine is required. Click here for more information on increasing the memory allocation for Docker engine on VirtualBox machine for MacOS and Windows Users.
 
@@ -24,7 +24,7 @@ Sample of format for the input csv file:
 In either case, the folder must be mounted to the container's "/root/data" (using ```-v``` tag). [Click here](http://container-solutions.com/understanding-volumes-docker/) for more information about Docker Volumes. 
 
 ### Output
-For each MS2 file provided, a MZID file containing the protein identification is generated. When the pipelines completed, tab-delimited csv files ```LabelledQuant.csv``` or ```LabelFreeQuant.csv```, and ```SpectrumCount.csv``` are also generated. LabelledQuant.csv``` or ```LabelFreeQuant.csv``` is the quantified result for either Labelled or LabelFree respectively. ```SpectrumCount.csv``` contains more detailed information including Spectrum No, Pep Sequence, and e-value that may be useful for filtering and further analysis. 
+For each MS2 file provided, a MZID file containing the protein identification is generated. When the pipelines completed, tab-delimited csv files ```LabelledQuant.txt``` or ```LabelFreeQuant.txt```, and ```SpectrumCount.txt``` are also generated. ```LabelledQuant.txt``` or ```LabelFreeQuant.txt``` is the quantified result for either Labelled or LabelFree respectively. ```SpectrumCount.txt``` contains more detailed information including Spectrum No, Pep Sequence, and e-value that may be useful for filtering and further analysis. 
 
 ### Running the container
 Make sure to put the files to compute on a separate folder and mounted to the Docker Engine. For Windows and MacOS /Users or /c/Users are set by default. 
@@ -40,8 +40,8 @@ Make sure to put the files to compute on a separate folder and mounted to the Do
 To run the container (LabelFree):
 
 ```
-docker pull kristiyanto/msgf:labelfree
-docker run --rm -v /c/Users/path/to/your/file:/root/data kristiyanto/msgf:labelfree
+docker pull kristiyanto/msgf:spectrumcount
+docker run --rm -v /c/Users/path/to/your/file:/root/data kristiyanto/msgf:spectrumcount
 ```
 
 To run the container (Labelled):
