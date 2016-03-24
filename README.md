@@ -24,9 +24,9 @@ Sample of format for the input csv file:
 In either case, the folder must be mounted to the container's "/root/data" (using ```-v``` tag). [Click here](http://container-solutions.com/understanding-volumes-docker/) for more information about Docker Volumes. 
 
 ### Output
-For each MS2 file provided, a MZID file containing the protein identification is generated. When the pipelines completed, tab-delimited csv files ```LabelledQuant.txt``` or ```LabelFreeQuant.txt```, and ```SpectrumCount.txt``` are also generated. 
+For each MS2 file provided, a MZID file containing the protein identification is generated. When the pipelines completed, tab-delimited csv files ```LabelledQuant.txt``` or ```LabelFreeQuant.txt```, and ```evalue.txt``` are also generated. 
 
-```LabelledQuant.txt``` or ```LabelFreeQuant.txt``` is the quantified result (output) for either Labelled or LabelFree respectively. ```SpectrumCount.txt``` contains more detailed information including Spectrum number, Pep Sequence, and e-value that may be useful for filtering and further analysis. 
+```LabelledQuant.txt``` or ```LabelFreeQuant.txt``` is the quantified result (output) for either Labelled or LabelFree respectively. ```evalue.txt``` contains more detailed information including Spectrum number, Pep Sequence, and e-value prior to the agggregation proccess that may be useful for further analysis.
 
 ### Running the container
 Make sure to put the files to compute on a separate folder and mounted to the Docker Engine. For Windows and MacOS /Users or /c/Users are set by default. 
