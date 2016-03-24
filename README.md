@@ -8,7 +8,7 @@ To run NMAE Docker engine must be installed. [Click here](https://docs.docker.co
 
 Protein identification and quantification is a computationally intensive process. Depending on the size of the data, at least 4Gb available memory on the Docker Machine is required. Click here for more information on increasing the memory allocation for Docker engine on VirtualBox machine for MacOS and Windows Users.
 
-![Adjusting RAM allocation for Docker Machine](media/ram.png)
+![Adjusting RAM allocation for Docker Machine](media/ram.png =250x)
 
 ### Input 
 The container takes Mass Spectrometry  (MS2) data ("\*.mzml","\*.mgf", "\*.mzxml", "\*.ms2", "\*.pkl") and peptide sequences files (\*.fasta). It is advised to put only the files to be computed in the folder as a separate sessions (e.g. different project for each folder).
