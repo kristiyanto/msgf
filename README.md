@@ -29,7 +29,7 @@ For each MS2 file provided, a MZID file containing the protein identification is
 ```LabelledQuant.txt``` or ```LabelFreeQuant.txt``` is the quantified result (output) for either Labelled or LabelFree respectively. ```evalue.txt``` contains more detailed information including Spectrum number, Pep Sequence, and e-value prior to the agggregation proccess that may be useful for further analysis.
 
 ### Running the container
-Make sure to put the files to compute on a separate folder and mounted to the Docker Engine. For Windows and MacOS /Users or /c/Users are set by default. 
+Make sure to put the files to compute on a separate folder and mounted to the Docker Engine. For Windows and MacOS ```/Users``` or ```/c/Users``` is the default. 
 
 * For Windows users, it usually starts with /c/Users/
 * For MacOS users, it usually starts with /Users/
