@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Msgf by kristiyanto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Msgf</h1>
+      <h2 class="project-tagline">Labelled and Label-free Mass Spectometry Data Identification and Quantification</h2>
+      <a href="https://github.com/kristiyanto/msgf" class="btn">View on GitHub</a>
+      <a href="https://github.com/kristiyanto/msgf/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/kristiyanto/msgf/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h3>
+<a id="title-here" class="anchor" href="#title-here" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TITLE HERE</h3>
+
+<p><em>NAME</em> is an open source pipelines for Mass Spectrometry Data Pre-Processing and Quantification, wrapped in a Docker container. Identification is performed by utilizing <a href="https://omics.pnl.gov/software/ms-gf">MSGF+ tool developed by PNNL</a>, and Quantification is conducted by utilizing MSnbase, bioconductor pacakge by Laurent Gatto et. all.</p>
+
+<p><em>NAME</em> uses Bioconductor proteomics image as the base image.</p>
+
+<h3>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h3>
+
+<p>To run <em>NAME</em> Docker engine must be installed. Click <a href="https://docs.docker.com/engine/installation/">here</a> for a detailed information to install Docker engine on various operating system including Windows and MacOS.</p>
+
+<p>Protein identification and quantification is a computationally intensive process. Depending on the size of the data, at least 4Gb available memory on the Docker Machine is required. Click here for more information on increasing the memory allocation for Docker engine on VirtualBox machine for MacOS and Windows Users.</p>
+
+<p>[Image]</p>
+
+<h3>
+<a id="input" class="anchor" href="#input" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Input</h3>
+
+<p>The container takes Mass Spectrometry  (MS2) data (<em>MZML, -add here-) and peptide sequences files (</em>.fasta). It is advised to put only the files to be computed in the folder as a separate sessions (e.g. different project for each folder).</p>
+
+<p>Alternatively, if the files are accessible on FTP server, a CSV file with the information about the files can as the input. The container reads the information, download the files and run the computation.</p>
+
+<p>In either case, the folder must be mounted to the container's "/root/data".</p>
+
+<h3>
+<a id="output" class="anchor" href="#output" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output</h3>
+
+<p>For each MS2 file provided, a MZID file containing the protein identification is generated. When the pipelines completed, a file <code>LabelledQuant.csv</code> or <code>LabelFreeQuant.csv</code>, and <code>SpectrumCount.csv</code> are also generated. <code>LabelledQuant.csv</code> or <code>LabelFreeQuant.csv</code> is the quantified result for either Labelled or LabelFree respectively. <code>SpectrumCount.csv</code> contains more detailed information including Spectrum No, Pep Sequence, and e-value that may be useful for filtering and further analysis. </p>
+
+<h3>
+<a id="running-the-container" class="anchor" href="#running-the-container" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running the container</h3>
+
+<p>Make sure to put the files to compute on a separate folder under the system Users files.
+On Windows, usually starts with /c/Users/YOURWINDOWSUSERNAME
+On MacOs, usually starts with /Users/YOURMACUSERNAME
+ON Linux, there is no restriction.</p>
+
+<p>To run the container (LabelFree):</p>
+
+<pre><code>docker pull kristiyanto/msgf:labelfree
+docker run --rm /c/Users/path/to/your/file:/root/data kristiyanto/msgf:labelfree
+</code></pre>
+
+<p>To run the container (Labelled):</p>
+
+<pre><code>docker pull kristiyanto/msgf:itraq
+docker run --rm /c/Users/path/to/your/file:/root/data kristiyanto/msgf:itraq
+</code></pre>
+
+<h3>
+<a id="contact-and-information" class="anchor" href="#contact-and-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact and Information</h3>
+
+<p>You are invited to contribute for new features, updates, fixes by sending pull requests.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/kristiyanto/msgf">Msgf</a> is maintained by <a href="https://github.com/kristiyanto">kristiyanto</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
