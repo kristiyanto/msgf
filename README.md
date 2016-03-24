@@ -1,5 +1,5 @@
 
-NAME is an open source pipelines for Mass Spectrometry Data Pre-Processing and Quantification, wrapped in a Docker container. Identification is performed by utilizing [MSGF+ tool developed by PNNL](https://omics.pnl.gov/software/ms-gf), and Quantification is conducted by utilizing MSnbase, a bioconductor package by [Laurent Gatto _et. all._](http://bioconductor.org/packages/release/bioc/html/MSnbase.html)
+NAME is an open source pipelines for Mass Spectrometry Data Pre-Processing and Quantification, wrapped in a Docker container. Identification is performed by utilizing [MSGF+ tool developed by PNNL](https://omics.pnl.gov/software/ms-gf), and Quantification is conducted by utilizing [MSnbase](http://bioconductor.org/packages/release/bioc/html/MSnbase.html), a bioconductor package by Laurent Gatto _et. all._
 
 NAME uses [Bioconductor Proteomics](https://github.com/Bioconductor/bioc_docker) image as the base image.
 
