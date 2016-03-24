@@ -3,7 +3,7 @@ library(mzID)
 library(stringr)
 
 setwd("/root/data")
-setwd("~/Documents/GITHUB/msgf/data/")
+
 ####################################### READ FILE ###################################################
 print("Isobaric Tagging Quantification")
 mzid.files        <- list.files(path = ".", pattern ="mzid", all.files = F, 
@@ -40,6 +40,6 @@ spectrum.count  <- as.data.frame(merge(fData(qnt)[,c("spectrum", "pepseq", "idFi
 quantified      <- as.data.frame(cbind(Accession_ID=str_replace(row.names(agg),"ref\\|",""),exprs(agg)))
 write.table(spectrum.count, quote=F, row.names=T, file="SpectrumCount.csv", sep ="\t")
 write.table(quantified, row.names = F, quote=F, file="LabelledQuant.csv", sep = "\t")
-save.image(file="LabelledQuant.csv")
+save.image(file="LabelledQuant.Rdata")
 
 

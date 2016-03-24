@@ -12,10 +12,11 @@ from ftplib import FTP
 
 def msgf(spectrum, db, out):
 	#print(spectrum, db, out)
-	try:
-		subprocess.call(['java', '-Xmx3500M', '-jar', 'MSGFPlus.jar', '-s', spectrum, '-d', db, '-o', out])
-	except:
-		print("MZID conversion failed.")
+	if not os.path.isfile(out):
+		try:
+			subprocess.call(['java', '-Xmx3500M', '-jar', 'MSGFPlus.jar', '-s', spectrum, '-d', db, '-o', out])
+		except:
+			print("MZID conversion failed.")
 
 def rscript():
 	print("Filtering.")

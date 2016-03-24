@@ -40,5 +40,5 @@ spectrum.count  <- as.data.frame(merge(fData(qnt)[,c("spectrum", "pepseq", "idFi
 quantified      <- as.data.frame(cbind(Accession_ID=str_replace(row.names(agg),"ref\\|",""),exprs(agg)))
 write.table(spectrum.count, quote=F, row.names=T, file="Out2-Spectrum.csv", sep ="\t")
 write.table(quantified, row.names = F, quote=F, file="LabelFreeQuant.csv", sep = "\t")
-save.image(file="LabelledQuant.csv")
+save.image(file="LabelFreeQuant.Data")
 
