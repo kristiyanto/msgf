@@ -5,7 +5,7 @@ library(stringr)
 setwd("/root/data")
 setwd("~/Documents/GITHUB/msgf/data/")
 ####################################### READ FILE ###################################################
-
+print("Isobaric Tagging Quantification")
 mzid.files        <- list.files(path = ".", pattern ="mzid", all.files = F, 
                        full.names = F, recursive = F, ignore.case = T, include.dirs = F)
 mzml.files        <- list.files(path = ".", pattern ="mzML$|mzXML$", all.files = F, 
