@@ -15,7 +15,7 @@ The container takes Mass Spectrometry  (MS2) data ("\*.mzml","\*.mgf", "\*.mzxml
 
 Alternatively, if the files are accessible on FTP server, a CSV file with the information about the files can as the input. The container reads the information, download the files and run the computation.
 
-In either case, the folder must be mounted to the container's "/root/data" (using -v tag).
+In either case, the folder must be mounted to the container's "/root/data" (using ```-v``` tag). [Click here](http://container-solutions.com/understanding-volumes-docker/) for more information about Docker Volumes. 
 
 ### Output
 For each MS2 file provided, a MZID file containing the protein identification is generated. When the pipelines completed, a file ```LabelledQuant.csv``` or ```LabelFreeQuant.csv```, and ```SpectrumCount.csv``` are also generated. LabelledQuant.csv``` or ```LabelFreeQuant.csv``` is the quantified result for either Labelled or LabelFree respectively. ```SpectrumCount.csv``` contains more detailed information including Spectrum No, Pep Sequence, and e-value that may be useful for filtering and further analysis. 
