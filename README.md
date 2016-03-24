@@ -33,7 +33,7 @@ Make sure to put the files to compute on a separate folder and mounted to the Do
 * For MacOS users, it usually starts with /Users/YOURMACUSERNAME
 * For Linux users, there is no restriction.
 
-![Linking volumes between host OS and VM (Docker Engine)](images/vmvolume.png)
+![Linking volumes between host OS and VM (Docker Engine)](media/vmvolume.png)
 
 Click here for more information about Folder Sharing from VM and host machine.
 
