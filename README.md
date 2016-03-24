@@ -1,7 +1,7 @@
 
-NAME is an open source pipelines for Mass Spectrometry Data Pre-Processing and Quantification, wrapped in a Docker container. Identification is performed by utilizing [MSGF+ tool developed by PNNL](https://omics.pnl.gov/software/ms-gf), and Quantification is conducted by utilizing MSnbase, bioconductor pacakge by Laurent Gatto et. all.
+NAME is an open source pipelines for Mass Spectrometry Data Pre-Processing and Quantification, wrapped in a Docker container. Identification is performed by utilizing [MSGF+ tool developed by PNNL](https://omics.pnl.gov/software/ms-gf), and Quantification is conducted by utilizing MSnbase, bioconductor pacakge by [Laurent Gatto _et. all._](http://bioconductor.org/packages/release/bioc/html/MSnbase.html)
 
-NAME uses Bioconductor proteomics image as the base image.
+NAME uses [Bioconductor Proteomics](https://github.com/Bioconductor/bioc_docker) image as the base image.
 
 ### Requirements
 To run NMAE Docker engine must be installed. [Click here](https://docs.docker.com/engine/installation/) for a detailed information to install Docker engine on various operating system including Windows and MacOS.
@@ -35,7 +35,7 @@ Make sure to put the files to compute on a separate folder and mounted to the Do
 
 ![Linking volumes between host OS and VM (Docker Engine)](media/vmvolume.png)
 
-[Click here](https://www.virtualbox.org/manual/ch04.html) for more information about Folder Sharing from VM and host machine.
+[Click here](https://www.virtualbox.org/manual/ch04.htmlftp) for more information about Folder Sharing from VM and host machine.
 
 To run the container (LabelFree):
 
