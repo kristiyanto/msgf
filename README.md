@@ -11,7 +11,7 @@ Protein identification and quantification is a computationally intensive process
 ![Adjusting RAM allocation for Docker Machine](media/ram.png)
 
 ### Input 
-The container takes Mass Spectrometry  (MS2) data ("\*.mzml","\*.mgf", "\*.mzxml", "\*.ms2", "\*.pkl") and peptide sequences files (\*.fasta). It is advised to put only the files to be computed in the folder as a separate sessions (e.g. different project for each folder).
+The container takes Mass Spectrometry  (MS2) data (\*.mzml, \*.mgf, \*.mzxml, \*.ms2, \*.pkl) and peptide sequences files (\*.fasta). It is advised to put only the files to be computed in the folder as a separate sessions (e.g. different project for each folder).
 
 Alternatively, if the files are accessible on FTP server, a CSV file with the information about the files can as the input. The container reads the information, download the files and run the computation.
 
