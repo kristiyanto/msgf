@@ -16,8 +16,8 @@ The container takes Mass Spectrometry  (MS2) data ("\*.mzml","\*.mgf", "\*.mzxml
 Alternatively, if the files are accessible on FTP server, a CSV file with the information about the files can as the input. The container reads the information, download the files and run the computation.
 
 Sample of csv file:
-Spectrum_Files | Database_File
----------------|--------------
+Spectrum_Files                                | Database_File
+----------------------------------------------|----------------------------------------------
 ftp://massive.ucsd.edu/MSV000079527/peak/mgf/ | ftp://massive.ucsd.edu/MSV000079527/sequence/
 
 In either case, the folder must be mounted to the container's "/root/data" (using ```-v``` tag). [Click here](http://container-solutions.com/understanding-volumes-docker/) for more information about Docker Volumes. 
