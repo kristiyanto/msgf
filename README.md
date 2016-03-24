@@ -19,7 +19,7 @@ Sample of format for the input csv file:
 
 | Spectrum_Files | Database_File |
 | --- | --- |
-| ftp://massive.ucsd.edu/MSV000079527/peak/mgf/ | ftp://massive.ucsd.edu/MSV000079527/sequence/ |
+| ftp://link/to/the/folder | ftp://link/to/file.fasta |
 
 In either case, the folder must be mounted to the container's "/root/data" (using ```-v``` tag). [Click here](http://container-solutions.com/understanding-volumes-docker/) for more information about Docker Volumes. 
 
