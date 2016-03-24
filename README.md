@@ -29,13 +29,13 @@ For each MS2 file provided, a MZID file containing the protein identification is
 ### Running the container
 Make sure to put the files to compute on a separate folder and mounted to the Docker Engine. For Windows and MacOS /Users or /c/Users are set by default. 
 
-* For Windows users, it usually starts with /c/Users/YOURWINDOWSUSERNAME
-* For MacOS users, it usually starts with /Users/YOURMACUSERNAME
+* For Windows users, it usually starts with /c/Users/
+* For MacOS users, it usually starts with /Users/
 * For Linux users, there is no restriction.
 
 ![Linking volumes between host OS and VM (Docker Engine)](media/vmvolume.png)
 
-Click here for more information about Folder Sharing from VM and host machine.
+[Click here](https://www.virtualbox.org/manual/ch04.html) for more information about Folder Sharing from VM and host machine.
 
 To run the container (LabelFree):
 
