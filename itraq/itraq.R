@@ -38,8 +38,8 @@ head(exprs(agg))
 print("Writing the output...")
 spectrum.count  <- as.data.frame(merge(fData(qnt)[,c("spectrum", "pepseq", "idFile", "ms-gf:evalue")], exprs(qnt), by="row.names"))
 quantified      <- as.data.frame(cbind(Accession_ID=str_replace(row.names(agg),"ref\\|",""),exprs(agg)))
-write.table(spectrum.count, quote=F, row.names=T, file="SpectrumCount.csv", sep ="\t")
-write.table(quantified, row.names = F, quote=F, file="LabelledQuant.csv", sep = "\t")
-save.image(file="LabelledQuant.Rdata")
+write.table(spectrum.count, quote=F, row.names=T, file="evalue.txt", sep ="\t")
+write.table(quantified, row.names = F, quote=F, file="LabelledQuant.txt", sep = "\t")
+#save.image(file="LabelledQuant.Rdata")
 
 
