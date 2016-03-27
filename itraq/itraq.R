@@ -17,9 +17,9 @@ msexp.raw         <- readMSData(mzml.files)
 ####################################### IDENTIFICATION ###################################################
 print("Identifiying...")
 msexp             <- addIdentificationData(msexp.raw, id = mzids.raw)
+idSummary(msexp)
 msexp             <- removeNoId(msexp)
 msexp             <- removeMultipleAssignment(msexp)
-idSummary(msexp)
 
 ####################################### CLEAN UP ###################################################
 rm(mzid.files)
